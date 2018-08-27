@@ -2,7 +2,7 @@ package com.gabry.akkamon.metrics.collector
 
 import akka.actor.Address
 import akka.cluster.metrics.{MetricsCollector, NodeMetrics}
-import com.gabry.akkamon.instrumentation.WeaveTargetAccess
+import com.gabry.akkamon.WeaveTargetAccess
 import com.gabry.akkamon.metrics.Metrics
 import org.slf4j.LoggerFactory
 

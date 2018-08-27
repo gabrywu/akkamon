@@ -7,7 +7,7 @@
 
     <weaver>
         <include within="akka..*"/>
-
+        <include within="com.gabry.akkamon.listener..*"/>
         <!-- For some weird reason ByteString produces a java.lang.VerifyError after going through the weaver. -->
         <exclude within="akka.util.ByteString"/>
 
