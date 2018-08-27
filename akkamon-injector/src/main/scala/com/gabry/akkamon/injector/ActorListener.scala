@@ -1,6 +1,7 @@
-package com.gabry.akkamon.listener
+package com.gabry.akkamon.injector
 
 import akka.actor.ActorRef
+import com.gabry.akkamon.listener.ActorSystemInstrumentationListener
 import com.gabry.akkamon.protocol.InjectMessage
 
 /**

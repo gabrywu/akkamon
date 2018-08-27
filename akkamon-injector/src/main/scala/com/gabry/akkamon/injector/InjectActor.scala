@@ -1,7 +1,6 @@
 package com.gabry.akkamon.injector
 
 import akka.actor.Actor
-import com.gabry.akkamon.listener.ActorListener
 
 /**
   * Created by gabry on 2018/8/27 13:59

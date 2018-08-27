@@ -13,18 +13,19 @@ import org.slf4j.LoggerFactory
 /**
   * ActorSystem注入的相关接口。由InstrumentationJavaShell负责调用相关接口
   */
-trait ListenerInstrumentation{
+trait Instrumentation
+trait ListenerInstrumentation extends Instrumentation {
   def afterListenerCreation(newListener:ActorSystemInstrumentationListener):Unit
   def afterListenerClose(oldListener:ActorSystemInstrumentationListener):Unit
 }
-trait ActorCellInstrumentation {
+trait ActorCellInstrumentation extends Instrumentation {
   def beforeActorCellCreation(system: ActorSystem, ref: ActorRef, props: Props, parent: ActorRef ):Unit
   def beforeActorTerminate(cell:ActorCell):Unit
 }
-trait ActorSystemInstrumentation {
+trait ActorSystemInstrumentation extends Instrumentation {
   def beforeActorSystemCreation(system: ActorSystem,config:Config): Unit
 }
-trait MessageInstrumentation{
+trait MessageInstrumentation extends Instrumentation {
   def beforeInvoke(cell: ActorCell, envelope: Envelope):Unit
   def beforeTell(receiver:ActorRef,message:Any,sender:ActorRef):Unit
   def beforeSend(cell: ActorCell,envelope: Envelope):Unit
@@ -39,6 +40,7 @@ class ActorSystemInjectPointImpl extends ActorSystemInjectPoint {
   import com.gabry.akkamon.listener.ActorSystemInstrumentationListeners._
   private val log = LoggerFactory.getLogger(classOf[ActorSystemInjectPoint])
   private var unListenedListener:Option[UnListenedListener] = None
+
   override def beforeActorCellCreation(system: ActorSystem, ref: ActorRef, props: Props, parent: ActorRef): Unit = {
     val message = notifyMessage(ActorCellCreation(system.name,ref,props,parent))
     log.debug(s"beforeActorCellCreation $message")
