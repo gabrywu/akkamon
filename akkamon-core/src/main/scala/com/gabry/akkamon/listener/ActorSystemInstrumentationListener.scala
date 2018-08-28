@@ -21,7 +21,9 @@ object ActorSystemInstrumentationListeners{
     }
     if( startupMessage.nonEmpty && bufferPos.get < startupMessageLength )
       0 until bufferPos.get foreach { idx =>
-        listeners.foreach(_.onMessage(startupMessage(idx)))
+        val message = startupMessage(idx)
+        println(s"message = $message idx = $idx")
+        listeners.foreach(listener => if(listener.filter(message)) listener.onMessage(message))
       }
 
   }
@@ -33,12 +35,23 @@ object ActorSystemInstrumentationListeners{
     if( listeners.isEmpty ){
       startupMessage(bufferPos.getAndIncrement()%startupMessageLength) = message
     }else{
-      listeners.foreach(_.onMessage(message))
+      listeners.foreach(listener => if(listener.filter(message)) listener.onMessage(message))
     }
     message
   }
 }
+
+/**
+  * 注入点监听器
+  */
 abstract class ActorSystemInstrumentationListener{
+  /**
+    * 对监听事件进行过滤
+    * 有些时候防止栈溢出或死循环，会放弃对本身listener的事件监听
+    * @param message 待过滤的消息
+    * @return true会调用onMessage;false不调用onMessage
+    */
+  def filter(message:InjectMessage):Boolean
   def onMessage(message:InjectMessage):Unit
   def close():Unit
 }

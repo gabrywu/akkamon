@@ -16,4 +16,6 @@ class UnListenedListener extends ActorSystemInstrumentationListener{
   override def close(): Unit = {
 
   }
+
+  override def filter(message: InjectMessage): Boolean = true
 }

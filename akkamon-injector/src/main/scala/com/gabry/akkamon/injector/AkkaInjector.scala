@@ -8,7 +8,6 @@ import akka.actor.{ActorRef, ExtendedActorSystem, Extension, Props}
   */
 object AkkaInjector{
   def apply(system: ExtendedActorSystem): AkkaInjector = new AkkaInjector(system)
-  def Inject(actorRef: ActorRef):Boolean = ! (actorRef.path.name == "InjectActor" && actorRef.path.parent.name == "system")
 }
 class AkkaInjector private (system: ExtendedActorSystem) extends Extension{
   val injectActor:ActorRef = system.systemActorOf(Props(classOf[InjectActor]),"InjectActor")

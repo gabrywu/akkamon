@@ -63,7 +63,7 @@ class ActorSystemInjectPointImpl extends ActorSystemInjectPoint {
   }
 
   override def beforeTell(receiver:ActorRef,message: Any, sender: ActorRef): Unit = {
-    val msg = notifyMessage(MessageTelled(receiver,message,sender))
+    val msg = notifyMessage(MessageTold(receiver,message,sender))
     log.debug(s"beforeTell $msg")
   }
 

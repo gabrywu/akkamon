@@ -24,8 +24,8 @@ object InjectMessage{
   final case class ActorSystemCreation(systemName:String,config:Config) extends ExtendedInjectMessage {
     override def toString: String = s"ActorSystemCreation($systemName,$config)"
   }
-  final case class MessageTelled(receiver:ActorRef, message:Any, sender:ActorRef) extends InjectMessage{
-    override def toString: String = s"MessageTelled($receiver,$message,$sender)"
+  final case class MessageTold(receiver:ActorRef, message:Any, sender:ActorRef) extends InjectMessage{
+    override def toString: String = s"MessageTold($receiver,$message,$sender)"
   }
   final case class MessageReceived(systemName:String, receiver:ActorRef, envelope: Envelope) extends ExtendedInjectMessage {
     override def toString: String = s"MessageReceived($systemName,$receiver,$envelope)"
