@@ -13,7 +13,7 @@ class UnListenedListener extends ActorSystemInstrumentationListener{
     log.warn(s"UnListened message $message")
   }
 
-  override def close(): Unit = {
+  override def postClose(): Unit = {
 
   }
 

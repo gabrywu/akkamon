@@ -18,8 +18,8 @@ object InjectMessage{
   final case class ActorCellCreation(systemName:String, actorRef:ActorRef, props:Props, parent:ActorRef) extends ExtendedInjectMessage {
     override def toString: String = s"ActorCellCreation($systemName,$actorRef,${props.clazz}(${props.args.mkString(",")}),$parent)"
   }
-  final case class ActorTerminated(systemName:String, actorRef:ActorRef) extends ExtendedInjectMessage {
-    override def toString: String = s"ActorTerminated($systemName,$actorRef)"
+  final case class ActorTerminated(systemName:String, terminatedActor:ActorRef) extends ExtendedInjectMessage {
+    override def toString: String = s"ActorTerminated($systemName,$terminatedActor)"
   }
   final case class ActorSystemCreation(systemName:String,config:Config) extends ExtendedInjectMessage {
     override def toString: String = s"ActorSystemCreation($systemName,$config)"

@@ -53,5 +53,8 @@ abstract class ActorSystemInstrumentationListener{
     */
   def filter(message:InjectMessage):Boolean
   def onMessage(message:InjectMessage):Unit
-  def close():Unit
+  final def close():Unit = {
+    postClose()
+  }
+  def postClose():Unit
 }
