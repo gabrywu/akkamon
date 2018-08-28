@@ -1,9 +1,8 @@
 # 方案说明
 
-core
+[博客地址](https://www.cnblogs.com/gabry/p/9543990.html)
 
-    --- collection:指标搜集相关
-    --- instrumentation:注入相关
-        ---WeaveTargetAccess 给MetricsCollector设置通过javaagent注入的InstrumentationJavaShell实例
+# 其他监控框架
+官方实现:[cinnamon-akka](https://developer.lightbend.com/docs/monitoring/2.3.x/instrumentations/akka/akka.html)
 
-ActorSystemCollection调用InstrumentationJavaShell相关的函数搜集指标
+第三方实现：[kamon](https://kamon.io)
