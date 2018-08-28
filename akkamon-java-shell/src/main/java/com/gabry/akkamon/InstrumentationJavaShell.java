@@ -1,10 +1,12 @@
 package com.gabry.akkamon;
 
-import akka.actor.*;
+import akka.actor.ActorCell;
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
 import akka.akkamon.extend.ActorSystemInjectPoint;
 import akka.akkamon.extend.ActorSystemInjectPointImpl;
 import akka.dispatch.Envelope;
-import akka.dispatch.sysmsg.SystemMessage;
 import com.gabry.akkamon.listener.ActorSystemInstrumentationListener;
 import com.typesafe.config.Config;
 import org.aspectj.lang.annotation.After;

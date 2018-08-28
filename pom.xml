@@ -6,9 +6,9 @@
   <version>1.0-SNAPSHOT</version>
   <inceptionYear>2008</inceptionYear>
   <modules>
-  <module>akkamon-core</module>
-  <module>akkamon-target</module>
-  <module>akkamon-java-shell</module>
+    <module>akkamon-core</module>
+    <module>akkamon-target</module>
+    <module>akkamon-java-shell</module>
     <module>akkamon-injector</module>
   </modules>
   <properties>
