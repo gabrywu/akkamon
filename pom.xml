@@ -10,6 +10,7 @@
     <module>akkamon-target</module>
     <module>akkamon-java-shell</module>
     <module>akkamon-injector</module>
+    <module>akkamon-metrics</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
